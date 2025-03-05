@@ -8,7 +8,7 @@ spec:
     namespace: argocd
   source:
     path: apps
-    repoURL: 'git@github.com:maor-klir/homelab-k8s-cluster-2.git'
+    repoURL: 'https://github.com/maor-klir/homelab-k8s-cluster-2.git'
     targetRevision: HEAD
   project: default
   syncPolicy:
