@@ -11,7 +11,7 @@ spec:
     repoURL: 'git@github.com:maor-klir/homelab-k8s-cluster-2.git'
     targetRevision: HEAD
   project: default
-   syncPolicy:
-     automated:
-       prune: true
-       selfHeal: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
