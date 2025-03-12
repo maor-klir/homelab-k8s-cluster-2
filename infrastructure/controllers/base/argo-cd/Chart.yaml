@@ -1,0 +1,4 @@
+apiVersion: v2
+name: argo-cd
+description: A Helm chart for deploying Argo CD
+version: 7.8.10

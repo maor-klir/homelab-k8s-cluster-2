@@ -1,0 +1,4 @@
+apiVersion: v2
+name: cilium
+description: A Helm chart for deploying Cilium
+version: 1.17.1
