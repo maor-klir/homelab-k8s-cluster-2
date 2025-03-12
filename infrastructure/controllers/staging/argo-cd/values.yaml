@@ -1,3 +1,5 @@
 server:
   service:
     type: LoadBalancer
+  labels:
+    cilium-lb-pool: lb-pool
