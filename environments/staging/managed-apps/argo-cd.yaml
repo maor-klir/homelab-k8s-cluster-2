@@ -16,7 +16,7 @@ spec:
   project: staging
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
+#      prune: true
+#      selfHeal: true
     syncOptions:
       - CreateNamespace=true
