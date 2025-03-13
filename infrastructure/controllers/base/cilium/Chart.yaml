@@ -21,3 +21,8 @@ version: 1.17.1
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 appVersion: 1.17.1
+
+dependencies:
+- name: cilium
+  version: 1.17.1
+  repository: https://helm.cilium.io/
