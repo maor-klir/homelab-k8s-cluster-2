@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: 'https://github.com/maor-klir/homelab-k8s-cluster-2.git'
     targetRevision: main
-    path: infrastructure/controllers/staging/argo-cd
+    path: infrastructure/core/argo-cd
   project: staging
   syncPolicy:
     automated:
