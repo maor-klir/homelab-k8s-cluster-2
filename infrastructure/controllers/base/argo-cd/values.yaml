@@ -1,0 +1,8 @@
+configs:
+  cm:
+    kustomize.buildOptions: "--enable-helm --load-restrictor=LoadRestrictionsNone"
+
+crds:
+  install: true
+  # -- Keep CRDs on chart uninstall
+  keep: false
