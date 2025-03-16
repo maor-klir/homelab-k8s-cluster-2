@@ -10,7 +10,7 @@ spec:
     path: environments/staging/managed-apps
     repoURL: 'https://github.com/maor-klir/homelab-k8s-cluster-2.git'
     targetRevision: HEAD
-  project: deafult
+  project: default
   syncPolicy:
     automated:
     #  prune: true
