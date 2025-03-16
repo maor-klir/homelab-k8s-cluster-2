@@ -13,7 +13,7 @@ spec:
     repoURL: 'https://github.com/maor-klir/homelab-k8s-cluster-2.git'
     targetRevision: main
     path: infrastructure/core/cilium
-  project: staging
+  project: default
   syncPolicy:
     automated:
 #      prune: true
