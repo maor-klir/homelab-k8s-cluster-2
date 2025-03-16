@@ -3,7 +3,7 @@ kind: Kustomization
 
 helmCharts:
   - name: argocd
-    releaseName: argocd
+    releaseName: argo-cd
     version: 7.8.10
     repo: https://argoproj.github.io/argo-helm
     namespace: argocd
