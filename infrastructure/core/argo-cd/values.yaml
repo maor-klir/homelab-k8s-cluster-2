@@ -7,6 +7,12 @@ crds:
   # -- Keep CRDs on chart uninstall
   keep: false
 
+server:
+  labels: 
+    cilium-lb-pool: lb-pool
+  service:
+    type: LoadBalancer
+
 ingress:
   enabled: true
   controller: generic
