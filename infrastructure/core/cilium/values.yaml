@@ -38,6 +38,13 @@ ingressController:
   enabled: true
   default: true
   loadbalancerMode: dedicated
+  service:
+    labels: 
+      cilium-lb-pool: lb-pool
+    # Set random values so Argo CD will not complain about the service being out of sync
+    insecureNodePort: 32434
+    secureNodePort: 32435
+    
  
 hubble:
   relay:
