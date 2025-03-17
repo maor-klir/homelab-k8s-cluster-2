@@ -8,9 +8,9 @@ crds:
   keep: false
 
 server:
-  labels: 
-    cilium-lb-pool: lb-pool
   service:
+    labels: 
+      cilium-lb-pool: lb-pool
     type: LoadBalancer
 
 ingress:
