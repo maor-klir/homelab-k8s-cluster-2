@@ -13,11 +13,12 @@ server:
       cilium-lb-pool: lb-pool
     type: LoadBalancer
 
-ingress:
-  enabled: true
-  controller: generic
-  ingressClassName: cilium
-  hostname: argocd.cloudandklir.com
-  path: /
-  pathType: Prefix
-  tls: false
+# This setup does not seem to be picked up by Argo CD
+# ingress:
+#   enabled: true
+#   controller: generic
+#   ingressClassName: cilium
+#   hostname: argocd.cloudandklir.com
+#   path: /
+#   pathType: Prefix
+#   tls: false
