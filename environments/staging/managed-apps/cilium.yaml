@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io  
+spec:
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: 'https://github.com/maor-klir/homelab-k8s-cluster-2.git'
+    targetRevision: main
+    path: infrastructure/core/cilium
+  project: default
+  syncPolicy:
+    automated: {}
+#      prune: true
+#      selfHeal: true

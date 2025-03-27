@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staging-app-of-apps
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  source:
+    path: environments/staging/managed-apps
+    repoURL: 'https://github.com/maor-klir/homelab-k8s-cluster-2.git'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+    #  prune: true
+      selfHeal: true

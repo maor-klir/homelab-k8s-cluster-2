@@ -1,0 +1,62 @@
+ipam:
+  mode: kubernetes
+
+kubeProxyReplacement: true
+
+operator:
+  replicas: 1
+
+securityContext:
+  capabilities:
+    ciliumAgent:
+      - CHOWN
+      - KILL
+      - NET_ADMIN
+      - NET_RAW
+      - IPC_LOCK
+      - SYS_ADMIN
+      - SYS_RESOURCE
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+    cleanCiliumState:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_RESOURCE
+
+cgroup:
+  autoMount:
+    enabled: false
+  hostRoot: /sys/fs/cgroup
+
+k8sServiceHost: localhost
+
+k8sServicePort: 7445
+
+ingressController:
+  enabled: true
+  default: true
+  loadbalancerMode: dedicated
+  # service:
+  #   labels: 
+  #     cilium-lb-pool: lb-pool
+  #   # Set random values so Argo CD will not complain about the service being out of sync
+  #   insecureNodePort: 32434
+  #   secureNodePort: 32435
+    
+ 
+hubble:
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+
+l2announcements:
+  enabled: true
+
+# Calculated based on 10 services:
+# as per the Cilium docs - https://docs.cilium.io/en/latest/network/l2-announcements/#sizing-client-rate-limit
+k8sClientRateLimit:
+  qps: 5
+  burst: 10

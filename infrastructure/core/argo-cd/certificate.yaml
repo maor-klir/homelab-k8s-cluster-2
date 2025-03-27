@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-tls-certificate
+  namespace: argocd
+spec:
+  secretName: argocd-server-tls
+  issuerRef:
+    name: acme-staging
+    kind: ClusterIssuer
+  dnsNames:
+  - argocd.cloudandklir.com 
