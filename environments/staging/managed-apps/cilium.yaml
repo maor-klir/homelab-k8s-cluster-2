@@ -15,6 +15,6 @@ spec:
     path: infrastructure/core/cilium
   project: default
   syncPolicy:
-    automated: {}
+    automated:
       prune: true
       selfHeal: true
