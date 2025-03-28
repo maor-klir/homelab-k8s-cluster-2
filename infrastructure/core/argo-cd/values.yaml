@@ -6,3 +6,13 @@ crds:
   install: true
   # -- Keep CRDs on chart uninstall
   keep: false
+
+server:
+  ingress:
+    enabled: true
+    controller: generic
+    ingressClassName: cilium
+    hostname: argocd.cloudandklir.com
+    path: /
+    pathType: Prefix
+    tls: false
