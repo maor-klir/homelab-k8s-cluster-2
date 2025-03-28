@@ -37,7 +37,7 @@ k8sServicePort: 7445
 ingressController:
   enabled: true
   default: true
-  loadbalancerMode: dedicated
+  loadbalancerMode: shared
   # service:
   #   labels: 
   #     cilium-lb-pool: lb-pool
