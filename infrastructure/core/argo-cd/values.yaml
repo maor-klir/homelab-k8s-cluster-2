@@ -12,6 +12,8 @@ server:
     enabled: true
     controller: generic
     ingressClassName: cilium
+    annoatations:
+      ingress.cilium.io/tls-passthrough: true
     hostname: argocd.cloudandklir.com
     path: /
     pathType: Prefix
