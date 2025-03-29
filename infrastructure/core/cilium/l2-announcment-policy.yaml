@@ -4,9 +4,9 @@ metadata:
   name: l2-policy
   namespace: kube-system
 spec:
-  serviceSelector:
-    matchLabels:
-      cilium-lb-pool: lb-pool
+  # serviceSelector:
+  #   matchLabels:
+  #     cilium-lb-pool: lb-pool
   loadBalancerIPs: true
   # Optional - externalIPs: true
   # The externalIPs.enabled=true Helm option must be set, if usage of externalIPs is desired. 
