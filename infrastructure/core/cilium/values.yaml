@@ -1,5 +1,6 @@
 ipam:
   mode: kubernetes
+  # Needs to be set uo to avoid out-of-sync status in Argo CD
   multiPoolPreAllocation: null
 
 kubeProxyReplacement: true
@@ -42,7 +43,7 @@ ingressController:
   service:
   #   labels: 
   #     cilium-lb-pool: lb-pool
-     # Set random values so Argo CD will not complain about the service being out of sync
+     # Set random values so Argo CD will not complain about the service being out-of-sync
     insecureNodePort: 32434
     secureNodePort: 32435
     
