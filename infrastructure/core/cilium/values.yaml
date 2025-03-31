@@ -1,5 +1,6 @@
 ipam:
   mode: kubernetes
+  multiPoolPreAllocation: null
 
 kubeProxyReplacement: true
 
@@ -38,12 +39,12 @@ ingressController:
   enabled: true
   default: true
   loadbalancerMode: shared
-  # service:
+  service:
   #   labels: 
   #     cilium-lb-pool: lb-pool
-  #   # Set random values so Argo CD will not complain about the service being out of sync
-  #   insecureNodePort: 32434
-  #   secureNodePort: 32435
+     # Set random values so Argo CD will not complain about the service being out of sync
+    insecureNodePort: 32434
+    secureNodePort: 32435
     
  
 hubble:
