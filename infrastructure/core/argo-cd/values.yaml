@@ -19,16 +19,14 @@ server:
     path: /
     pathType: Prefix
     tls: true
-
-certificate:
-  enabled: true
-  domain: cloudandklir.com
-  issuer:
-    group: cert-manager.io
-    kind: ClusterIssuer
-    name: acme-staging
-
-certificateSecret:
-  enabled: true
-  key: tls.key
-  crt: tls.crt
+  certificate:
+    enabled: true
+    domain: cloudandklir.com
+    issuer:
+      group: cert-manager.io
+      kind: ClusterIssuer
+      name: acme-staging
+  certificateSecret:
+    enabled: true
+    key: tls.key
+    crt: tls.crt
