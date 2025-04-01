@@ -15,5 +15,5 @@ crds:
 # Setting Nameservers for DNS01 Self Check.
 # For more information, see:
 # [cert-manager documentation](https://cert-manager.io/docs/configuration/acme/dns01/#setting-nameservers-for-dns01-self-check).
-# dns01RecursiveNameservers: 8.8.8.8:53,1.1.1.1:53
-# dns01RecursiveNameserversOnly: true
+dns01RecursiveNameservers: 8.8.8.8:53,1.1.1.1:53
+dns01RecursiveNameserversOnly: true
