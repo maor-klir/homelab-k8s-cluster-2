@@ -13,8 +13,22 @@ server:
     controller: generic
     ingressClassName: cilium
     annoatations:
-      - ingress.cilium.io/tls-passthrough: true
+      ingress.cilium.io/tls-passthrough: true
+      cert-manager.io/cluster-issuer: acme-staging
     hostname: argocd.cloudandklir.com
     path: /
     pathType: Prefix
-    tls: false
+    tls: true
+
+certificate:
+  enabled: true
+  domain: cloudandklir.com
+  issuer:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: acme-staging
+
+certificateSecret:
+  enabled: true
+  key: tls.key
+  crt: tls.crt
