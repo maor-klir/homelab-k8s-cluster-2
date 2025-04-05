@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: 'https://github.com/maor-klir/homelab-k8s-cluster-2.git'
     targetRevision: main
-    path: apps/staging/homepage
+    path: apps/base/homepage
   project: default
   syncPolicy:
     automated:
