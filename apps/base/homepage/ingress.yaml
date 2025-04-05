@@ -14,6 +14,7 @@ metadata:
     cert-manager.io/cluster-issuer: acme-staging
     ingress.cilium.io/tls-passthrough: enabled
 spec:
+  ingressClassName: cilium
   rules:
     - host: "homepage.cloudandklir.com"
       http:
