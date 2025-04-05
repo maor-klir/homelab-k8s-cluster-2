@@ -5,7 +5,7 @@ resources:
 - allowed-hosts-cm.yaml
 - cm.yaml
 - cr-crb.yaml
-- deploy,.yaml
+- deploy.yaml
 - ingress.yaml
 - ns.yaml
 - sa.yaml
