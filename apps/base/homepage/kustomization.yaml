@@ -11,4 +11,4 @@ resources:
 - sa.yaml
 - secret.yaml
 - svc.yaml
-- tls-cert.yaml
+# - tls-cert.yaml

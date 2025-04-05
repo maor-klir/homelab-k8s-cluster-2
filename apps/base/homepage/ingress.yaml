@@ -11,8 +11,8 @@ metadata:
     gethomepage.dev/group: Cluster Management
     gethomepage.dev/icon: homepage.png
     gethomepage.dev/name: Homepage
-    cert-manager.io/cluster-issuer: acme-staging
-    ingress.cilium.io/tls-passthrough: enabled
+    # cert-manager.io/cluster-issuer: acme-staging
+    # ingress.cilium.io/tls-passthrough: enabled
 spec:
   ingressClassName: cilium
   rules:
@@ -26,7 +26,7 @@ spec:
                 name: homepage
                 port:
                   number: 3000
-      tls:
-      - hosts:
-        - homepage.cloudandklir.com
-        secretName: homepage-tls
+      # tls:
+      # - hosts:
+      #   - homepage.cloudandklir.com
+      #   secretName: homepage-tls
