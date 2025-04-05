@@ -27,5 +27,5 @@ spec:
                   number: 3000
       tls:
       - hosts:
-          - homepage.cloudandklir.com
+        - homepage.cloudandklir.com
         secretName: homepage-tls
