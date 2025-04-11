@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-certificate
+  namespace: argocd
+spec:
+  secretName: argo-server-tls # cert-manager stores the key & cert here
+  issuerRef:
+    name: acme-staging
+    kind: ClusterIssuer
+  dnsNames:
+    - argocd.cloudandklir.com
