@@ -8,5 +8,8 @@ spec:
       name: argocd-server
       group: ""
   validation:
-    CACertificateRefs: argocd-certificate
+    CACertificateRefs: 
+      - kind: Certificate
+      - name: argocd-certificate
+      - group: "cert-manager-io"
     hostname: argocd.cloudandklir.com

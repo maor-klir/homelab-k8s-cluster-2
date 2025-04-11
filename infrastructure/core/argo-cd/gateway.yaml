@@ -1,12 +1,13 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: argocd
+  name: argocd-gateway
   namespace: argocd
 spec:
   gatewayClassName: cilium
 listeners:
-- protocol: TLS # Other possible value is `HTTPS`
+- name: argocd-tls
+  protocol: TLS # Other possible value is `HTTPS`
   port: 443
   hostname: argocd.cloudandklir.com
   tls:
