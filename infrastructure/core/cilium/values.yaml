@@ -6,7 +6,7 @@ ipam:
 kubeProxyReplacement: true
 
 operator:
-  replicas: 1
+  replicas: 3
 
 securityContext:
   capabilities:
@@ -36,16 +36,21 @@ k8sServiceHost: localhost
 
 k8sServicePort: 7445
 
-ingressController:
+# ingressController:
+#   enabled: true
+#   default: true
+#   loadbalancerMode: shared
+#   service:
+#   #   labels: 
+#   #     cilium-lb-pool: lb-pool
+#     # Set random values so Argo CD will not complain about the service being out-of-sync
+#     insecureNodePort: 32434
+#     secureNodePort: 32435
+
+getwayAPI:
   enabled: true
-  default: true
-  loadbalancerMode: shared
-  service:
-  #   labels: 
-  #     cilium-lb-pool: lb-pool
-    # Set random values so Argo CD will not complain about the service being out-of-sync
-    insecureNodePort: 32434
-    secureNodePort: 32435
+  enableAlpn: true
+  enableAppProtocol: true
     
  
 hubble:
