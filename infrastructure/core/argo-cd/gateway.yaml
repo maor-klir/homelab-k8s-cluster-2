@@ -5,17 +5,17 @@ metadata:
   namespace: argocd
 spec:
   gatewayClassName: cilium
-listeners:
-- name: argocd-tls
-  protocol: TLS # Other possible value is `HTTPS`
-  port: 443
-  hostname: argocd.cloudandklir.com
-  tls:
-    mode: Passthrough # 'Terminate or 'Passthrough'. If protocol is `TLS`, `Passthrough` is a possible mode
-    # certificateRefs:
-    # - kind: Secret
-    #   group: ""
-    #   name: argocd-server-tls
+  listeners:
+  - name: argocd-tls
+    protocol: TLS # Other possible value is `HTTPS`
+    port: 443
+    hostname: argocd.cloudandklir.com
+    tls:
+      mode: Passthrough # 'Terminate or 'Passthrough'. If protocol is `TLS`, `Passthrough` is a possible mode
+      # certificateRefs:
+      # - kind: Secret
+      #   group: ""
+      #   name: argocd-server-tls
     allowedRoutes:
       namespaces:
         from: All
