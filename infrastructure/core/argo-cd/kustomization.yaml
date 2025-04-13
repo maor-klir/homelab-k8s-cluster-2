@@ -5,6 +5,7 @@ resources:
   - backend-tls-policy.yaml
   - certificate.yaml
   - gateway.yaml
+  - tls-route.yaml
 
 helmCharts:
   - name: argo-cd
