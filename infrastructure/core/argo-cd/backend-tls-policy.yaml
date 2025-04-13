@@ -2,6 +2,7 @@ apiVersion: gateway.networking.k8s.io/v1alpha3
 kind: BackendTLSPolicy
 metadata:
   name: argocd-tls-upstream
+  nameapce: argocd
 spec:
   targetRefs:
     - kind: Service
@@ -9,7 +10,7 @@ spec:
       group: ""
   validation:
     CACertificateRefs: 
-      - kind: Certificate
-      - name: argocd-certificate
-      - group: "cert-manager-io"
+      - kind: Secret
+        name: argo-server-tls
+        group: ""
     hostname: argocd.cloudandklir.com

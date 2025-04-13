@@ -12,7 +12,13 @@ listeners:
   hostname: argocd.cloudandklir.com
   tls:
     mode: Passthrough # 'Terminate or 'Passthrough'. If protocol is `TLS`, `Passthrough` is a possible mode
-    certificateRefs:
-    - kind: Secret
-      group: ""
-      name: argocd-server-tls
+    # certificateRefs:
+    # - kind: Secret
+    #   group: ""
+    #   name: argocd-server-tls
+    allowedRoutes:
+      namespaces:
+        from: All
+      kinds:
+      - group: gateway.networking.k8s.io
+        kind: TLSRoute
