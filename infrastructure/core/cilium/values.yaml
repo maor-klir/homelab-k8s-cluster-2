@@ -49,8 +49,8 @@ k8sServicePort: 7445
 
 getwayAPI:
   enabled: true
-  # enableAlpn: true
-  # enableAppProtocol: true
+  enableAlpn: false
+  enableAppProtocol: false
     
  
 hubble:
