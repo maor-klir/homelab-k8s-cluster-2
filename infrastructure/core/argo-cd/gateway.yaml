@@ -19,6 +19,6 @@ spec:
     allowedRoutes:
       namespaces:
         from: All
-      kinds:
-      - group: gateway.networking.k8s.io
-        kind: TLSRoute
+      # kinds:
+      # - group: gateway.networking.k8s.io
+      #   kind: TLSRoute
