@@ -47,11 +47,8 @@ k8sServicePort: 7445
 #     insecureNodePort: 32434
 #     secureNodePort: 32435
 
-getwayAPI:
-  enabled: true
-  enableAlpn: false
-  enableAppProtocol: false
-    
+gatewayAPI:
+  enabled: true 
  
 hubble:
   relay:

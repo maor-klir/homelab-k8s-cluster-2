@@ -11,6 +11,9 @@ spec:
   # The externalIPs.enabled=true Helm option must be set, if usage of externalIPs is desired. 
   # Otherwise service load balancing for external IPs is disabled.
   # https://kubernetes.io/docs/concepts/services-networking/service/#external-ips
+  
+  # Added a nodeSelector entry to avoid using any Control Plane node 
+  # as an entry point for the load balancer.
   nodeSelector:
     matchExpressions:
     - key: node-role.kubernetes.io/control-plane
