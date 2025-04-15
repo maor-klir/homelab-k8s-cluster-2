@@ -21,7 +21,7 @@ server:
   #   tls: true
   certificate:
     enabled: true
-    domain: cloudandklir.com
+    domain: argocd.cloudandklir.com
     issuer:
       group: cert-manager.io
       kind: ClusterIssuer
