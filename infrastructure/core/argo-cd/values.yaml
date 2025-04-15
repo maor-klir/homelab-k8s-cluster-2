@@ -25,7 +25,7 @@ server:
     issuer:
       group: cert-manager.io
       kind: ClusterIssuer
-      name: acme-staging
+      name: acme-prod
   certificateSecret:
     enabled: true
     key: tls.key

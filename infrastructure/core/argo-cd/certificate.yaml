@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: argo-server-tls # cert-manager stores the key & cert here
   issuerRef:
-    name: acme-staging
+    name: acme-prod
     kind: ClusterIssuer
   dnsNames:
     - argocd.cloudandklir.com
