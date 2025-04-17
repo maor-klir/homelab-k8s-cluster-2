@@ -14,8 +14,8 @@ cloudflare:
 sources:
   - service
   - ingress
-  - httproute
-  - tlsroute
-  - grpcroute
-  - udproute
-  - tcproute
+  - gateway-httproute
+  - gateway-tlsroute
+  - gateway-grpcroute
+  - gateway-udproute
+  - gateway-tcproute
