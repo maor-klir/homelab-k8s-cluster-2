@@ -1,15 +1,15 @@
-provider:
-  name: cloudflare
-env:
-  - name: CF_API_TOKEN
-    valueFrom:
-      secretKeyRef:
-        name: cloudflare-api-token
-        key: api-token
+# provider:
+#   name: cloudflare
+# env:
+#   - name: CF_API_TOKEN
+#     valueFrom:
+#       secretKeyRef:
+#         name: cloudflare-api-token
+#         key: api-token
 
-# cloudflare:
-#   apiToken: CF_API_TOKEN
-#   secretName: cloudflare-api-token
+cloudflare:
+  apiToken: CF_API_TOKEN
+  secretName: cloudflare-api-token
 
 sources:
   - service
