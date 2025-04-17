@@ -1,4 +1,5 @@
-provider: cloudflare
+provider:
+  name: cloudflare
 env:
   - name: CF_API_TOKEN
     valueFrom:
@@ -6,9 +7,9 @@ env:
         name: cloudflare-api-token
         key: cloudflare-api-token
 
-cloudflare:
-  apiToken: CF_API_TOKEN
-  secretName: cloudflare-api-token
+# cloudflare:
+#   apiToken: CF_API_TOKEN
+#   secretName: cloudflare-api-token
 
 sources:
   - service
