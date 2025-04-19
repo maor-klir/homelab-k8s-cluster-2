@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - namespace.yaml
-  - ../../configs/test/cert-manager/
+  - ../../../configs/test/cert-manager/
 
 helmCharts:
   - name: cert-manager
