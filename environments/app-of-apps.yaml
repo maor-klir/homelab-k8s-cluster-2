@@ -7,7 +7,7 @@ spec:
     name: in-cluster
     namespace: argocd
   source:
-    path: environments/overlays
+    path: environments/
     repoURL: "https://github.com/maor-klir/homelab-k8s-cluster-2.git"
     targetRevision: HEAD
     directory:
