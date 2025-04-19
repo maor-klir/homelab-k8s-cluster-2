@@ -1,6 +1,7 @@
 configs:
   cm:
     kustomize.buildOptions: "--enable-helm --load-restrictor=LoadRestrictionsNone"
+    url: "https://argocd.cloudandklir.com"
 
 crds:
   install: true
