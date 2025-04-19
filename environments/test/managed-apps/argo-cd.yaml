@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-dns
+  name: argo-cd
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: external-dns
+    namespace: argocd
     server: https://kubernetes.default.svc
   source:
     repoURL: "https://github.com/maor-klir/homelab-k8s-cluster-2.git"
     targetRevision: main
-    path: infrastructure/core/external-dns
+    path: infrastructure/core/test/argo-cd
   project: default
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    automated: {}
+#      prune: true
+#      selfHeal: true

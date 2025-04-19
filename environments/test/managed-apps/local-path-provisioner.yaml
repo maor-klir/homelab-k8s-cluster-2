@@ -4,19 +4,17 @@ metadata:
   name: local-path-provisioner
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io  
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: local-path-storage
     server: https://kubernetes.default.svc
   source:
-    repoURL: 'https://github.com/maor-klir/homelab-k8s-cluster-2.git'
+    repoURL: "https://github.com/maor-klir/homelab-k8s-cluster-2.git"
     targetRevision: main
-    path: infrastructure/controllers/staging/local-path-provisioner
+    path: infrastructure/controllers/test/local-path-provisioner
   project: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

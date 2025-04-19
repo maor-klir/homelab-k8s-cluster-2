@@ -4,15 +4,15 @@ metadata:
   name: cilium
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io  
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: kube-system
     server: https://kubernetes.default.svc
   source:
-    repoURL: 'https://github.com/maor-klir/homelab-k8s-cluster-2.git'
+    repoURL: "https://github.com/maor-klir/homelab-k8s-cluster-2.git"
     targetRevision: main
-    path: infrastructure/core/cilium
+    path: infrastructure/core/test/cilium
   project: default
   syncPolicy:
     automated:

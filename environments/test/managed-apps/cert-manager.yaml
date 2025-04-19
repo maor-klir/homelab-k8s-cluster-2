@@ -4,17 +4,17 @@ metadata:
   name: cert-manager
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io  
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: cert-manager
     server: https://kubernetes.default.svc
   source:
-    repoURL: 'https://github.com/maor-klir/homelab-k8s-cluster-2.git'
+    repoURL: "https://github.com/maor-klir/homelab-k8s-cluster-2.git"
     targetRevision: main
-    path: infrastructure/core/cert-manager
+    path: infrastructure/core/test/cert-manager
   project: default
   syncPolicy:
-    automated: 
+    automated:
       prune: true
       selfHeal: true
