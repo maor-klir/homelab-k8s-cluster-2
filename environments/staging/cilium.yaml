@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cilium-test
+  name: cilium-staging
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: kube-system
-    server: https://kubernetes.default.svc
+    server: talos-staging
   source:
     repoURL: "https://github.com/maor-klir/homelab-k8s-cluster-2.git"
     targetRevision: main
-    path: infrastructure/core/test/cilium
+    path: infrastructure/core/staging/cilium
   project: default
   syncPolicy:
     automated:
