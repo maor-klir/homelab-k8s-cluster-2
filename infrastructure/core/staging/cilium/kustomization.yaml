@@ -5,4 +5,13 @@ resources:
   - ../../test/cilium
 
 patches:
-  - staging-patch.yaml
+  - target:
+      name: lb-pool
+      kind: CiliumLoadBalancerIPPool
+    patch: |-
+      - op: replace
+        path: /spec/blocks/start
+        value: "192.168.0.211"
+      - op: replace
+        path: /spec/blocks/stop
+        value: "192.168.0.220"
