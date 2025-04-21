@@ -19,7 +19,13 @@ spec:
         - name: external-dns
           image: registry.k8s.io/external-dns/external-dns:v0.16.1
           args:
-            - --source=service,ingress,gateway-httproute,gateway-tlsroute,gateway-grpcroute,gateway-udproute,gateway-tcproute
+            - --source=service
+            - --source=ingress
+            - --source=gateway-httproute
+            - --source=gateway-tlsroute
+            - --source=gateway-grpcroute
+            - --source=gateway-udproute
+            - --source=gateway-tcproute
             - --domain-filter=cloudanklir.com # (optional) limit to only example.com domains; change to match the zone created above.
             - --provider=cloudflare
             - --cloudflare-proxied # (optional) enable the proxy feature of Cloudflare (DDOS protection, CDN...)
