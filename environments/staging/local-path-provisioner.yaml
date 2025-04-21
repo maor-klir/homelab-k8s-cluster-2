@@ -8,12 +8,12 @@ metadata:
 spec:
   destination:
     namespace: local-path-storage
-    server: https://kubernetes.default.svc
+    server: https://192.168.0.14:6443
   source:
     repoURL: "https://github.com/maor-klir/homelab-k8s-cluster-2.git"
     targetRevision: main
     path: infrastructure/controllers/staging/local-path-provisioner
-  project: default
+  project: staging
   syncPolicy:
     automated:
       prune: true
