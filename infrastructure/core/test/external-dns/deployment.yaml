@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: external-dns
+  template:
+    metadata:
+      labels:
+        app: external-dns
+    spec:
+      serviceAccountName: external-dns
+      containers:
+        - name: external-dns
+          image: registry.k8s.io/external-dns/external-dns:v0.16.1
+          args:
+            - --source=service,ingress,gateway-httproute,gateway-tlsroute,gateway-grpcroute,gateway-udproute,gateway-tcproute
+            - --domain-filter=cloudanklir.com # (optional) limit to only example.com domains; change to match the zone created above.
+            - --provider=cloudflare
+            - --cloudflare-proxied # (optional) enable the proxy feature of Cloudflare (DDOS protection, CDN...)
+            - --policy=upsert-only # (optional) prevent external-dns from removing records
+          env:
+            - name: CF_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: cloudflare-api-token
+                  key: cloudflare-api-token
