@@ -16,7 +16,7 @@ rules:
     resources: ["ingresses"]
     verbs: ["get", "watch", "list"]
   - apiGroups: ["gateway.networking.k8s.io"]
-    resources: ["httproutes", "grpcroutes"]
+    resources: ["gateways", "httproutes", "grpcroutes"]
     verbs: ["get", "watch", "list"]
   - apiGroups: ["gateway.networking.k8s.io/v1beta1"]
     resources: ["referencegrants"]
