@@ -1,0 +1,21 @@
+env:
+  - name: CF_API_KEY
+    valueFrom:
+      secretKeyRef:
+        key: apiKey
+        name: cloudflare-api-key
+  - name: CF_API_EMAIL
+    valueFrom:
+      secretKeyRef:
+        key: email
+        name: cloudflare-api-key
+provider:
+  name: cloudflare
+sources:
+  - service
+  - ingress
+  - gateway-httproute
+  - gateway-tlsroute
+  - gateway-grpcroute
+  - gateway-udproute
+  - gateway-tcproute

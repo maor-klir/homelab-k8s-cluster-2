@@ -3,6 +3,14 @@ kind: Kustomization
 
 resources:
   - cloudflare-api-key.yaml
-  - deployment.yaml
+  # - deployment.yaml
   - namespace.yaml
-  - rbac.yaml
+  # - rbac.yaml
+
+helmCharts:
+  - name: external-dns
+    releaseName: external-dns
+    version: 1.16.1
+    repo: https://kubernetes-sigs.github.io/external-dns/
+    namespace: external-dns
+    valuesFile: values.yaml
