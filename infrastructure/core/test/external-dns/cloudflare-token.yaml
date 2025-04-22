@@ -11,6 +11,6 @@ spec:
     name: cloudflare-api-token # The Kubernetes Secret that will get created (in the "external-secrets" namespace)
     creationPolicy: Owner
   data:
-    - secretKey: cloudflare-api-token
+    - secretKey: cloudflare-api-token # The name of the key within the secret
       remoteRef:
         key: talos-external-dns-cf-token # The name of the secret in AWS Secrets Manager
