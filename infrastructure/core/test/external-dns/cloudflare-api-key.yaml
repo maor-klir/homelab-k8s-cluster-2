@@ -9,7 +9,7 @@ spec:
     name: aws-secrets-manager
     kind: ClusterSecretStore
   target:
-    name: cloudflare-api-key # The Kubernetes Secret that will get created (in the "external-secrets" namespace)
+    name: test # The Kubernetes Secret that will get created (in the "external-secrets" namespace)
     creationPolicy: Owner
   data:
     - secretKey: apiKey # The name of the key within the secret
