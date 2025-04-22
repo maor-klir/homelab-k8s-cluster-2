@@ -9,14 +9,10 @@ spec:
     name: aws-secrets-manager
     kind: ClusterSecretStore
   target:
-    name: test # The Kubernetes Secret that will get created (in the "external-secrets" namespace)
+    name: cloudflare-api-key # The Kubernetes Secret that will get created (in the "external-secrets" namespace)
     creationPolicy: Owner
   data:
     - secretKey: apiKey # The name of the key within the secret
       remoteRef:
         key: talos-external-dns-cf-token # The name of the secret in AWS Secrets Manager
         property: apiKey # The actual key name in AWSSM secret for the API key
-    - secretKey: email # The name of the key within the secret
-      remoteRef:
-        key: talos-external-dns-cf-token # The name of the secret in AWS Secrets Manager
-        property: email # The actual key name in your AWS secret for the email
