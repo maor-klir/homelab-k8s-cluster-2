@@ -30,6 +30,7 @@ spec:
             - --provider=cloudflare
             - --cloudflare-proxied # (optional) enable the proxy feature of Cloudflare (DDOS protection, CDN...)
             - --policy=upsert-only # (optional) prevent external-dns from removing records
+            - --log-level=debug # increase verbosity
           env:
             - name: CF_API_TOKEN
               valueFrom:
