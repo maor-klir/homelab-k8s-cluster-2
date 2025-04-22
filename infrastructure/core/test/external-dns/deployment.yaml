@@ -32,8 +32,13 @@ spec:
             - --policy=upsert-only # (optional) prevent external-dns from removing records
             - --log-level=debug # increase verbosity
           env:
-            - name: CF_API_TOKEN
+            - name: CF_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: cloudflare-api-token
+                  name: cloudflare-api-key
                   key: apiKey
+            - name: CF_API_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: cloudflare-api-key
+                  key: email
