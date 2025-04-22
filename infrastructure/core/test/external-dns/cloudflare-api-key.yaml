@@ -15,6 +15,8 @@ spec:
     - secretKey: apiKey # The name of the key within the secret
       remoteRef:
         key: talos-external-dns-cf-token # The name of the secret in AWS Secrets Manager
+        property: apiKey # The actual key name in AWSSM secret for the API key
     - secretKey: email # The name of the key within the secret
       remoteRef:
         key: talos-external-dns-cf-token # The name of the secret in AWS Secrets Manager
+        property: email # The actual key name in your AWS secret for the email
