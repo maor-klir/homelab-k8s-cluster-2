@@ -2,6 +2,27 @@
 loki:
   # Use monolithic mode for simplicity on a small cluster with local storage
   target: monolithic
+  auth_enabled: false # Often useful to disable auth for testing
+
+  # === ADDED TO SATISFY HELM TEMPLATE ===
+  # The template seems to expect this structure even in filesystem mode.
+  # Add dummy values here.
+  storage:
+    bucketNames:
+      chunks: dummy-chunks-bucket
+      ruler: dummy-ruler-bucket
+      admin: dummy-admin-bucket
+      # Add other bucket names if the template references them (less common)
+
+    # Add dummy object store config required by some templates
+    s3: # Or gcs, azure, etc., depending on what the template expects
+      endpoint: dummy
+      bucket_name: dummy-bucket
+      access_key_id: dummy
+      secret_access_key: dummy
+      insecure: true # Set true if using dummy endpoint
+  # =====================================
+
   structuredConfig:
     common:
       storage:
@@ -28,6 +49,9 @@ loki:
         type: local
         local:
           directory: /data/loki/ruler
+    # Add query_range and other structuredConfig sections as needed from the previous plan
+    query_range:
+      align_queries_with_step: true
 
 # Configure statefulset and PVC for the monolithic instance
 statefulset:
