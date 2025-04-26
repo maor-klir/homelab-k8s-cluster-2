@@ -5,6 +5,6 @@ helmCharts:
   - name: grafana
     releaseName: grafana
     version: 8.13.0
-    repo: https://prometheus-community.github.io/helm-charts
+    repo: https://grafana.github.io/helm-charts
     namespace: observability
     valuesFile: values.yaml
