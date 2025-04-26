@@ -12,7 +12,7 @@ spec:
     targetRevision: HEAD
     directory:
       recurse: true
-      exclude: environments/test/observability
+      exclude: "environments/test/observability"
   project: default
   syncPolicy:
     automated:
