@@ -1,0 +1,66 @@
+---
+mimir:
+  # Use monolithic mode for simplicity on a small cluster with local storage
+  target: monolithic
+  structuredConfig:
+    common:
+      storage:
+        # Filesystem backend for monolithic mode with local storage
+        backend: filesystem
+        filesystem:
+          dir: /data/mimir
+    # Set data directory for the monolithic target components using filesystem backend
+    blocks_storage:
+      backend: filesystem
+      filesystem:
+        dir: /data/mimir/blocks
+    ruler:
+      storage:
+        backend: filesystem
+        filesystem:
+          dir: /data/mimir/ruler
+    alertmanager_storage:
+      backend: filesystem
+      filesystem:
+        dir: /data/mimir/alertmanager
+
+# Configure statefulset and PVC for the monolithic instance
+statefulset:
+  enabled: true
+  replicas: 1 # Set to 1 due to local storage constraints with local-path
+  volumeMounts:
+    - name: storage
+      mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path # Specify the local-path storage class
+        resources:
+          requests:
+            storage: 50Gi # Adjust size as needed based on expected metrics volume
+
+# Disable other components not needed in monolithic mode deployment via Helm
+alertmanager:
+  enabled: false
+compactor:
+  enabled: false
+distributor:
+  enabled: false
+etc:
+  enabled: false
+ingester:
+  enabled: false
+overrides_exporter:
+  enabled: false
+query_frontend:
+  enabled: false
+query_scheduler:
+  enabled: false
+querier:
+  enabled: false
+ruler:
+  enabled: false
+storegateway:
+  enabled: false

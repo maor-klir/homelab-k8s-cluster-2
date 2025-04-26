@@ -1,0 +1,86 @@
+---
+agent:
+  mode: daemonset # Deploy an agent pod on each node
+  ## Agent configuration in Alloy's declarative language
+  configMap:
+    content: |
+      # --- Metrics Configuration ---
+      # In this plan, Prometheus is handling primary metric scraping.
+      # However, you *could* add metrics scraping configs here in Alloy
+      # if you prefer Alloy to collect certain metrics.
+      # metrics:
+      #   scrape_configs:
+      #     - job_name: 'example-app-metrics-alloy'
+      #       # ... scraping config ...
+      #   remote_write:
+      #     - url: http://mimir-write.observability.svc.cluster.local/api/v1/push # Mimir write endpoint
+
+      # --- Logs Configuration ---
+      logs:
+        configs:
+          - name: kubernetes_logs
+            scrape_configs:
+              # Example: Scrape container logs from Kubernetes pods
+              - job_name: kubernetes-pods
+                kubernetes_sd_configs:
+                  - role: pod
+                relabel_configs:
+                  - source_labels: [__meta_kubernetes_pod_node_name]
+                    target_label: __host__
+                  - source_labels: [__meta_kubernetes_pod_uid]
+                    target_label: __input_target_label
+                  - action: replace
+                    source_labels: [__meta_kubernetes_pod_namespace]
+                    target_label: namespace
+                  - action: replace
+                    source_labels: [__meta_kubernetes_pod_name]
+                    target_label: pod_name
+                  - action: replace
+                    source_labels: [__meta_kubernetes_container_name]
+                    target_label: container_name
+                  - action: replace
+                    source_labels: [__meta_kubernetes_pod_uid]
+                    target_label: pod_uid
+                  - action: replace
+                    source_labels: [__meta_kubernetes_container_hash]
+                    target_label: container_hash
+                  # Optional: Filter which pods to scrape logs from
+                  # Example: only scrape pods with the annotation agent.grafana.io/scrape: true
+                  - action: drop
+                    regex: true
+                    source_labels: [__meta_kubernetes_pod_annotation_agent_grafana_io_scrape]
+                    action: unless
+                  # Example: only scrape pods with the label agent.grafana.io/scrape: true
+                  # - action: drop
+                  #   regex: true
+                  #   source_labels: [__meta_kubernetes_pod_label_agent_grafana_io_scrape]
+                  #   action: unless
+
+            clients:
+              # Configure Alloy to send logs to the Loki push endpoint
+              - url: http://loki.observability.svc.cluster.local:3100/loki/api/v1/push # Loki push endpoint within the cluster
+                # Optional: tenant header if multi-tenancy is enabled in Loki
+                # headers:
+                #   X-Scope-OrgID: YOUR_TENANT_ID
+
+      # --- Traces Configuration ---
+      traces:
+        configs:
+          - name: default
+            receivers:
+              # Configure Alloy to receive traces via OpenTelemetry (OTLP)
+              otlp:
+                protocols:
+                  grpc:
+                  http:
+            batch:
+              timeout: 5s
+            exporters:
+              # Configure Alloy to export traces to the Tempo OTLP endpoint
+              otlp:
+                endpoint: tempo.observability.svc.cluster.local:4317 # Tempo OTLP gRPC endpoint within the cluster
+                tls:
+                  insecure: true # Set to false and configure certs in production environments
+                # Optional: tenant header if multi-tenancy is enabled in Tempo
+                # headers:
+                #   X-Scope-OrgID: YOUR_TENANT_ID

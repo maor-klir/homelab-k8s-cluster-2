@@ -1,0 +1,21 @@
+---
+persistence:
+  enabled: true
+  storageClassName: local-path # Specify the local-path storage class for Grafana's database
+  size: 10Gi # Adjust size as needed for Grafana's internal database and dashboards
+  accessModes:
+    - ReadWriteOnce
+
+# Use the sidecar for provisioning
+sidecar:
+  datasources:
+    enabled: true
+    label: grafana_datasource
+    labelValue: "1"
+  dashboards:
+    enabled: true
+    label: grafana_dashboard
+    labelValue: "1"
+    searchNamespace: ALL # Recommended to find dashboards in other namespaces
+    provider:
+      allowUiUpdates: true # Allows editing dashboards in the UI

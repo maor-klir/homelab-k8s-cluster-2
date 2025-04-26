@@ -1,0 +1,42 @@
+---
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate: # Enable and configure the volume claim template for local TSDB
+        spec:
+          storageClassName: local-path # Specify the local-path storage class
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 20Gi # Adjust size as needed for short-term storage
+    remoteWrite:
+      # Configure Prometheus to send data to the Mimir write endpoint
+      - url: "http://mimir.observability.svc.cluster.local:9009/api/v1/push" # Replace with your Mimir service address within the cluster
+        # Optional: Add headers for multi-tenancy if configured in Mimir
+        # headers:
+        #   X-Scope-OrgID: YOUR_TENANT_ID
+    # Configure service discovery to find targets for scraping
+    # Adjust namespace selectors based on where your applications/exporters are
+    serviceMonitorNamespaceSelectors:
+      any: true # Example: Discover ServiceMonitors in any namespace
+    podMonitorNamespaceSelectors:
+      any: true # Example: Discover PodMonitors in any namespace
+
+# Disable Alertmanager if you don't need it (can use Grafana Alerting)
+alertmanager:
+  enabled: false
+
+# Keep or disable default exporters included in kube-prometheus-stack
+# These are commonly used and Prometheus will scrape them and send data to Mimir
+kubeEtcd:
+  enabled: false # Typically not needed in a basic setup
+kubeControllerManager:
+  enabled: false # Typically not needed
+kubeScheduler:
+  enabled: false # Typically not needed
+kubeProxy:
+  enabled: false # Typically not needed
+kubeStateMetrics:
+  enabled: true # Recommended: Collects metrics about Kubernetes objects
+nodeExporter:
+  enabled: true # Recommended: Collects node-level host metrics

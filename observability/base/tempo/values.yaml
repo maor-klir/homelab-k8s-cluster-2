@@ -1,0 +1,42 @@
+---
+tempo:
+  # Use monolithic mode for simplicity on a small cluster with local storage
+  target: monolithic
+  structuredConfig:
+    common:
+      storage:
+        # Filesystem backend for monolithic mode with local storage
+        backend: filesystem
+        filesystem:
+          directory: /data/tempo
+    trace_by_id:
+      backend: filesystem
+      filesystem:
+        directory: /data/tempo/trace_by_id
+
+# Configure statefulset and PVC for the monolithic instance
+statefulset:
+  enabled: true
+  replicas: 1 # Set to 1 due to local storage constraints with local-path
+  volumeMounts:
+    - name: storage
+      mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path # Specify the local-path storage class
+        resources:
+          requests:
+            storage: 50Gi # Adjust size as needed based on expected trace volume
+
+# Disable other components not needed in monolithic mode deployment via Helm
+distributor:
+  enabled: false
+ingester:
+  enabled: false
+querier:
+  enabled: false
+query_frontend:
+  enabled: false

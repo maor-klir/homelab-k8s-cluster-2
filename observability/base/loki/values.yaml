@@ -1,0 +1,55 @@
+---
+loki:
+  # Use monolithic mode for simplicity on a small cluster with local storage
+  target: monolithic
+  structuredConfig:
+    common:
+      storage:
+        # Filesystem backend for monolithic mode with local storage
+        backend: filesystem
+        filesystem:
+          dir: /data/loki
+    # Configure the boltdb-shipper index and chunks storage within the filesystem backend
+    ingester:
+      chunk_idle_period: 5m
+      chunk_retain_period: 30s
+    compactor:
+      working_directory: /data/loki/boltdb-shipper-compactor
+      shared_store: filesystem
+      compaction_interval: 10m
+    storage_config:
+      boltdb_shipper:
+        active_index_directory: /data/loki/boltdb-shipper-active
+        cache_location: /data/loki/boltdb-shipper-cache
+        resync_interval: 5m
+        shared_store: filesystem # Use filesystem for shared store in monolithic mode
+    ruler:
+      storage:
+        type: local
+        local:
+          directory: /data/loki/ruler
+
+# Configure statefulset and PVC for the monolithic instance
+statefulset:
+  enabled: true
+  replicas: 1 # Set to 1 due to local storage constraints with local-path
+  volumeMounts:
+    - name: storage
+      mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path # Specify the local-path storage class
+        resources:
+          requests:
+            storage: 50Gi # Adjust size as needed based on expected log volume
+
+# Disable other components not needed in monolithic mode deployment via Helm
+backend:
+  enabled: false
+read:
+  enabled: false
+write:
+  enabled: false
