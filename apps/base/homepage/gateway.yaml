@@ -1,15 +1,15 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: argocd-gateway
-  namespace: argocd
+  name: homepage-gateway
+  namespace: homepage
 spec:
   gatewayClassName: cilium
   listeners:
-    - name: argocd-tls
+    - name: homepage-tls
       protocol: TLS # Other possible value is `HTTPS`
       port: 443
-      hostname: argocd.cloudandklir.com
+      hostname: homepage.cloudandklir.com
       tls:
         mode: Passthrough # 'Terminate or 'Passthrough'. If protocol is `TLS`, `Passthrough` is a possible mode
         # certificateRefs:
@@ -19,6 +19,6 @@ spec:
       allowedRoutes: # Specify the namespaces from which Routes may be attached to this Gateway
         namespaces:
           from: Same
-        # kinds:
+        # kinds: # Restrict further to specific attached Routes
         # - group: gateway.networking.k8s.io
         #   kind: TLSRoute

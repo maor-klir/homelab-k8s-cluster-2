@@ -8,6 +8,7 @@ metadata:
 data:
   kubernetes.yaml: |
     mode: cluster
+    gateway: true
   settings.yaml: ""
   #settings.yaml: |
   #  providers:
@@ -21,20 +22,20 @@ data:
             - abbr: GH
               href: https://github.com/
   services.yaml: |
-    - My First Group:
-        - My First Service:
-            href: http://localhost/
-            description: Homepage is awesome
+    - Homelab:
+        - Argo CD:
+            href: https://argocd.clouidandklir.com/
+            description: Argo CD
+            icon: argo-cd.png
+    # - My Second Group:
+    #     - My Second Service:
+    #         href: http://localhost/
+    #         description: Homepage is the best
 
-    - My Second Group:
-        - My Second Service:
-            href: http://localhost/
-            description: Homepage is the best
-
-    - My Third Group:
-        - My Third Service:
-            href: http://localhost/
-            description: Homepage is 😎
+    # - My Third Group:
+    #     - My Third Service:
+    #         href: http://localhost/
+    #         description: Homepage is 😎
   widgets.yaml: |
     - kubernetes:
         cluster:

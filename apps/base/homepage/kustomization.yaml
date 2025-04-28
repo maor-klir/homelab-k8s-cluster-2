@@ -2,13 +2,14 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- allowed-hosts-cm.yaml
-- cm.yaml
-- rbac.yaml
-- deploy.yaml
-- ingress.yaml
-- ns.yaml
-- sa.yaml
-- secret.yaml
-- svc.yaml
-# - tls-cert.yaml
+  - allowed-hosts-cm.yaml
+  - configmap.yaml
+  - deployment.yaml
+  - gateway.yaml
+  - namespace.yaml
+  - rbac.yaml
+  - secret.yaml
+  - service.yaml
+  - serviceaccount.yaml
+  - tls-certificate
+  - tls-route.yaml

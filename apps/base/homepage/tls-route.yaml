@@ -1,0 +1,25 @@
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TLSRoute
+metadata:
+  name: homepage-tls-route
+  annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/description:
+    gethomepage.dev/group: Media
+    gethomepage.dev/icon: homepage.png
+    gethomepage.dev/name: Homepage
+  namespace: homepage
+spec:
+  # Reference the Gateway that should use this route
+  parentRefs:
+    - name: homepage-gateway
+      namespace: homepage
+      sectionName: homepage-tls # The specific listener name from the Gateway
+  hostnames:
+    - "homepage.cloudandklir.com"
+  rules: # Define the routing rules
+    - backendRefs:
+        - name: homepage
+          port: 443
+          # kind: Service
+          # namespace: homepage
