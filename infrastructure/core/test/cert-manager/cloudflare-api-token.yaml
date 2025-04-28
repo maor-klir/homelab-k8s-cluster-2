@@ -1,0 +1,18 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: cloudflare-api-token
+  namespace: cert-manager
+spec:
+  refreshInterval: 10m
+  secretStoreRef:
+    name: aws-secrets-manager
+    kind: ClusterSecretStore
+  target:
+    name: cloudflare-api-token-secret # The Kubernetes Secret that will get created (in the "external-secrets" namespace)
+    creationPolicy: Owner
+  data:
+    - secretKey: api-token # The name of the key within the Kubernetes Secret
+      remoteRef:
+        key: talos-cloudflare-api-token # The name of the secret in AWS Secrets Manager
+        property: cloudflare-api-token # The actual key name in AWSSM secret for the API token

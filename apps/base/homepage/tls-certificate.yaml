@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: homepage-tls
   issuerRef:
-    name: acme-staging
+    name: acme-prod
     kind: ClusterIssuer
   dnsNames:
-  - homepage.cloudandklir.com 
+    - homepage.cloudandklir.com
