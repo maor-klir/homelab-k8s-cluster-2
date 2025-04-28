@@ -1,5 +1,5 @@
 apiVersion: gateway.networking.k8s.io/v1alpha2
-kind: TLSRoute
+kind: HTTPRoute
 metadata:
   name: homepage-tls-route
   annotations:
@@ -14,7 +14,7 @@ spec:
   parentRefs:
     - name: homepage-gateway
       namespace: homepage
-      sectionName: homepage-tls # The specific listener name from the Gateway
+      sectionName: homepage-https # The specific listener name from the Gateway
   hostnames:
     - "homepage.cloudandklir.com"
   rules: # Define the routing rules

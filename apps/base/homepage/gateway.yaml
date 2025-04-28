@@ -6,19 +6,19 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
-    - name: homepage-tls
-      protocol: TLS # Other possible value is `HTTPS`
+    - name: homepage-https
+      protocol: HTTPS # Other possible value is `TLS`
       port: 443
       hostname: homepage.cloudandklir.com
       tls:
-        mode: Passthrough # 'Terminate or 'Passthrough'. If protocol is `TLS`, `Passthrough` is a possible mode
-        # certificateRefs:
-        # - kind: Secret
-        #   group: ""
-        #   name: argocd-server-tls
+        mode: Terminate # 'Terminate or 'Passthrough'. If protocol is `TLS`, `Passthrough` is a possible mode
+        certificateRefs:
+          - kind: Secret
+            group: ""
+            name: homepage-tls
       allowedRoutes: # Specify the namespaces from which Routes may be attached to this Gateway
         namespaces:
           from: Same
         # kinds: # Restrict further to specific attached Routes
         # - group: gateway.networking.k8s.io
-        #   kind: TLSRoute
+        #   kind: HTTPRoute
