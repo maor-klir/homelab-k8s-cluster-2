@@ -8,7 +8,7 @@ spec:
   listeners:
     - name: homepage-tls
       protocol: TLS # Other possible value is `HTTPS`
-      port: 3000
+      port: 443
       hostname: homepage.cloudandklir.com
       tls:
         mode: Passthrough # 'Terminate or 'Passthrough'. If protocol is `TLS`, `Passthrough` is a possible mode
