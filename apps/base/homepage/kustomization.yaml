@@ -11,5 +11,5 @@ resources:
   - secret.yaml
   - service.yaml
   - serviceaccount.yaml
-  - tls-certificate
+  - tls-certificate.yaml
   - tls-route.yaml
