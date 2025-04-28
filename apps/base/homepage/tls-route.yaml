@@ -20,6 +20,6 @@ spec:
   rules: # Define the routing rules
     - backendRefs:
         - name: homepage
-          port: 443
+          port: 3000
           # kind: Service
           # namespace: homepage

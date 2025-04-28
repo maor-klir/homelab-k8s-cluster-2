@@ -17,4 +17,4 @@ spec:
         - name: argocd-server
           kind: Service
           namespace: argocd
-          port: 3000
+          port: 443
