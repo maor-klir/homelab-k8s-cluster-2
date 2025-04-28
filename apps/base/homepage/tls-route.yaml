@@ -21,5 +21,5 @@ spec:
     - backendRefs:
         - name: homepage
           port: 3000
-          # kind: Service
-          # namespace: homepage
+          kind: Service
+          namespace: homepage
