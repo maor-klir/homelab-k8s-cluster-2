@@ -12,6 +12,7 @@ spec:
     targetRevision: HEAD
     directory:
       recurse: true
+      include: "*.yaml"
       exclude: "environments/test/observability/*"
   project: default
   syncPolicy:
