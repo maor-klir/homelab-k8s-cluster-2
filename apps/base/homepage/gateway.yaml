@@ -16,6 +16,7 @@ spec:
           - kind: Secret
             group: ""
             name: homepage-tls
+            namespace: homepage
       allowedRoutes: # Specify the namespaces from which Routes may be attached to this Gateway
         namespaces:
           from: Same
