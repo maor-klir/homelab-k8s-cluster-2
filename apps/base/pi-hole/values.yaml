@@ -76,3 +76,12 @@ podDnsConfig:
 # capabilities:
 #   add:
 #     - CAP_SYS_NICE
+
+probes:
+  readiness:
+    enabled: true
+    initialDelaySeconds: 60 
+    failureThreshold: 10 
+    timeoutSeconds: 5 
+    port: http 
+    scheme: HTTP
