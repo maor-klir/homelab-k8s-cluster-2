@@ -1,6 +1,6 @@
 ---
 replicaCount: 2
-maxUnavailable: 0
+maxUnavailable: 2
 
 serviceDns:
   mixedService: true
