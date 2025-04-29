@@ -18,8 +18,9 @@ Secondly, I plan to self-host some applications for personal usage.
 - [Argo CD](https://argo-cd.readthedocs.io/en/stable/): a declarative, GitOps continuous delivery tool for Kubernetes
 - [cert-manager](https://cert-manager.io/): cloud-native certificate management for Kubernetes
 - [External Secrets Operator](https://external-secrets.io/latest/): a Kubernetes operator that integrates external secret management systems (in my case, with [AWS Secrets Manager](https://aws.amazon.com/secrets-manager/))
+- [ExternalDNS](https://kubernetes-sigs.github.io/external-dns/latest): a mechanism to control DNS records dynamically synchronizing Kubernetes Services, Ingresses, and Gateway API resources with DNS providers
 
-## 💻 Underlying Infrastructure
+## 🏗️ Underlying Infrastructure
 
 Started out my journey hosting Kubernetes nodes on bare metal, where each node was provisioned onto a single HP EliteDesk 800 G2 DM mini PC.
 
@@ -27,10 +28,15 @@ Later on I have decided to transition to provisioning each node as a VM on a Pro
 
 That way, I can provision and bootstrap clusters more quickly, easily, and with less overhead.
 
+## 📦 Deployed Applications
+
+- [homepage](https://gethomepage.dev/): a modern highly customizable application dashboard with integrations for over 100 services and translations into multiple languages
+- [Pi-hole](https://pi-hole.net/): network-wide ad blocking [DNS sinkhole](https://en.wikipedia.org/wiki/DNS_Sinkhole) that protects devices from unwanted content, without installing any client-side software
+
 ## 🗺️ Current Environments
 
-- talos-test - a 3-node cluster, where all testing and exploration is being made. Stable core infrastructure and workloads are being promoted to the staging environment
-- talos-staging - a 3-node cluster, where all deployed workloads are stable and reliable.
+- `talos-test` - a 3-node cluster, where all testing and exploration is being made. Stable core infrastructure and workloads are being promoted to the staging environment
+- `talos-staging` - a 3-node cluster, where all deployed workloads are stable and reliable.
 
 ---
 
