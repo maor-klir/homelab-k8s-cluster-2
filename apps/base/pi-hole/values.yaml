@@ -71,12 +71,12 @@ adlists:
   - https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts # Stalkerware
   - https://lists.cyberhost.uk/malware.txt # Cyberhost UK Malware
 
-podDnsConfig:
-  enabled: true
-  policy: "None"
-  nameservers:
-  - 1.1.1.1
-  - 1.0.0.1
+# podDnsConfig:
+#   enabled: true
+#   policy: "None"
+#   nameservers:
+#   - 127.0.0.1
+#   - 1.1.1.1
 
 # capabilities:
 #   add:

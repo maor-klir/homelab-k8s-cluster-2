@@ -13,18 +13,6 @@ spec:
     - "pi-hole.cloudandklir.com"
   # Define the routing rules
   rules: 
-    # - matches:
-    #   # Match the root path
-    #   - path:
-    #       type: PathPrefix
-    #       value: "/"
-    #   # Add a filter to rewrite the path before sending to the backend
-    #   filters:
-    #     - type: URLRewrite
-    #       urlRewrite:
-    #         path:
-    #           type: ReplaceFullPath
-    #           replaceFullPath: "/admin" 
     - backendRefs:
         - name: pi-hole-pihole-web
           port: 80
