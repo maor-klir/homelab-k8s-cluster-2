@@ -24,7 +24,7 @@ data:
   services.yaml: |
     - Homelab:
         - Argo CD:
-            href: https://argocd.clouidandklir.com/
+            href: https://argocd.cloudandklir.com/
             description: Argo CD
             icon: argo-cd.png
     # - My Second Group:

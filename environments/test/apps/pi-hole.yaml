@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pi-hole-test
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: pi-hole
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: "https://github.com/maor-klir/homelab-k8s-cluster-2.git"
+    targetRevision: main
+    path: apps/test/pi-hole
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
