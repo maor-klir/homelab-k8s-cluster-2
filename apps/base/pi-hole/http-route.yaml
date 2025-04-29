@@ -23,8 +23,8 @@ spec:
         - type: URLRewrite
           urlRewrite:
             path:
-              type: ReplacePrefixMatch
-              replacePrefixMatch: "/admin/login" 
+              type: ReplaceFullPath
+              replaceFullPath: "/admin" 
       backendRefs:
         - name: pi-hole-pihole-web
           port: 80
