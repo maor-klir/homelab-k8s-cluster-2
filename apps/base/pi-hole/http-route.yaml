@@ -12,7 +12,10 @@ spec:
   hostnames:
     - "pi-hole.cloudandklir.com"
   rules: # Define the routing rules
-    - backendRefs:
+    - matches:
+      - path: 
+          value: "/admin"
+      backendRefs:
         - name: pi-hole-pihole-web
           port: 80
           kind: Service
