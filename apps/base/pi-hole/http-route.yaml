@@ -16,8 +16,8 @@ spec:
       - path: 
           type: PathPrefix
           value: "/admin"
-        backendRefs:
-          - name: pi-hole-pihole-web
-            port: 80
-            kind: Service
-            namespace: pi-hole
+      backendRefs:
+        - name: pi-hole-pihole-web
+          port: 80
+          kind: Service
+          namespace: pi-hole
