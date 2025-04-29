@@ -72,3 +72,7 @@ podDnsConfig:
   nameservers:
   - 1.1.1.1
   - 1.0.0.1
+
+capabilities:
+  add:
+    - CAP_SYS_NICE
