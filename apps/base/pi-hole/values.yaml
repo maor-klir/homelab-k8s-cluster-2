@@ -18,6 +18,11 @@ resources:
    cpu: 100m
    memory: 256Mi
 
+persistentVolumeClaim:
+  enabled: true
+  storageClass: local-path
+  size: "1Gi"
+
 admin:
   enabled: true
   existingSecret: "pi-hole-secret"
