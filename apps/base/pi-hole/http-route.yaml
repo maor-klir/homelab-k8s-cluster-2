@@ -14,6 +14,7 @@ spec:
   rules: # Define the routing rules
     - matches:
       - path: 
+          type: PathPrefix
           value: "/admin"
         backendRefs:
           - name: pi-hole-pihole-web
