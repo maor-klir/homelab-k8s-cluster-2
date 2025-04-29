@@ -11,11 +11,20 @@ spec:
       sectionName: pi-hole-https # The specific listener name from the Gateway
   hostnames:
     - "pi-hole.cloudandklir.com"
-  rules: # Define the routing rules
+  # Define the routing rules
+  rules: 
     - matches:
-      - path: 
+      # Match the root path
+      - path:
           type: PathPrefix
-          value: "/admin"
+          value: "/"
+      # Add a filter to rewrite the path before sending to the backend
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: "/admin" 
       backendRefs:
         - name: pi-hole-pihole-web
           port: 80
