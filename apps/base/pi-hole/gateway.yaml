@@ -1,0 +1,25 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: pi-hole-gateway
+  namespace: pi-hole
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - name: pi-hole-https
+      protocol: HTTPS # Other possible value is `TLS`
+      port: 443
+      hostname: pi-hole.cloudandklir.com
+      tls:
+        mode: Terminate # 'Terminate or 'Passthrough'. If protocol is `TLS`, `Passthrough` is a possible mode
+        certificateRefs:
+          - kind: Secret
+            group: ""
+            name: pi-hole-tls
+            namespace: pi-hole
+      allowedRoutes: # Specify the namespaces from which Routes may be attached to this Gateway
+        namespaces:
+          from: Same
+        # kinds: # Restrict further to specific attached Routes
+        # - group: gateway.networking.k8s.io
+        #   kind: HTTPRoute

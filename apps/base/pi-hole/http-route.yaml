@@ -1,0 +1,19 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: pi-hole-http-route
+  namespace: pi-hole
+spec:
+  # Reference the Gateway that should use this route
+  parentRefs:
+    - name: pi-hole-gateway
+      namespace: pi-hole
+      sectionName: pi-hole-https # The specific listener name from the Gateway
+  hostnames:
+    - "pi-hole.cloudandklir.com"
+  rules: # Define the routing rules
+    - backendRefs:
+        - name: pi-hole-pihole-web
+          port: 443
+          kind: Service
+          namespace: pi-hole
