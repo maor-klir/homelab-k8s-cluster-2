@@ -24,7 +24,7 @@ spec:
           urlRewrite:
             path:
               type: ReplacePrefixMatch
-              replacePrefixMatch: "/admin" 
+              replacePrefixMatch: "/admin/login" 
       backendRefs:
         - name: pi-hole-pihole-web
           port: 80
