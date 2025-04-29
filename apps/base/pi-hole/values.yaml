@@ -1,6 +1,6 @@
 ---
-replicaCount: 2
-maxUnavailable: 1
+# replicaCount: 2
+# maxUnavailable: 1
 
 serviceDns:
   mixedService: true
@@ -78,6 +78,13 @@ podDnsConfig:
 #     - CAP_SYS_NICE
 
 probes:
+  liveness:
+    enabled: true
+    initialDelaySeconds: 60
+    failureThreshold: 10
+    timeoutSeconds: 5
+    port: http 
+    scheme: HTTP
   readiness:
     enabled: true
     initialDelaySeconds: 60 
