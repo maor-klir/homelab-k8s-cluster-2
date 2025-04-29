@@ -14,6 +14,6 @@ spec:
   rules: # Define the routing rules
     - backendRefs:
         - name: pi-hole-pihole-web
-          port: 443
+          port: 80
           kind: Service
           namespace: pi-hole
