@@ -15,8 +15,8 @@ spec:
     - matches:
       - path: 
           value: "/admin"
-      backendRefs:
-        - name: pi-hole-pihole-web
-          port: 80
-          kind: Service
-          namespace: pi-hole
+        backendRefs:
+          - name: pi-hole-pihole-web
+            port: 80
+            kind: Service
+            namespace: pi-hole
