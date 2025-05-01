@@ -13,6 +13,17 @@ spec:
     - "pi-hole.cloudandklir.com"
   # Define the routing rules
   rules: 
+    - matches:
+      - path:
+          type: Exact
+          value: "/"
+      filters:
+      - type: RequestRedirect
+        requestRedirect:
+          path:
+            type: ReplaceFullPath
+            replaceFullPath: /admin
+          statusCode: 302   
     - backendRefs:
         - name: pi-hole-pihole-web
           port: 80
