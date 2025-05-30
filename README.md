@@ -1,12 +1,12 @@
 # 🏡☸️ homelab-k8s-cluster-2
 
-My second homelab Kubernetes cluster implemented through [GitOps principles](https://opengitops.dev/) and powered by Talos Linux and Argo CD.
+This GitHub repository contains all the documentation and configuration of my second self-hosted homelab Kubernetes environment implemented through [GitOps principles](https://opengitops.dev/) and powered by Talos Linux, Argo CD, and Cilium.
 
 ## 📖 Introduction
 
-This Kubernetes cluster was concieved first and foremost for learning purposes.
+This Kubernetes environment was first and foremost concieved for learning purposes.
 
-My main goal is to learn how to deploy and implement each tooling i.e. technology mentioned following industry's best-practices regarding networking, identity, security, and scalability.
+My main goal is to learn how to deploy and implement each tooling i.e. technology mentioned following industry's best practices regarding networking, identity, security, and scalability.
 
 Secondly, I plan to self-host some applications for personal usage.
 
@@ -36,7 +36,7 @@ That way, I can provision and bootstrap clusters more quickly, easily, and with 
 ## 🗺️ Current Environments
 
 - `talos-test` - a 3-node cluster, where all testing and exploration is being made. Stable core infrastructure and workloads are being promoted to the staging environment
-- `talos-staging` - a 3-node cluster, where all deployed workloads are stable and reliable.
+- `talos-staging` - a 3-node cluster, where all deployed workloads are stable and reliable
 
 ---
 
